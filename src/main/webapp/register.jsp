@@ -12,6 +12,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -49,7 +50,7 @@
                 <label><input type="checkbox">I agree to the terms & conditions</label>
 
             </div>
-            <button type="submit" class="btn">Register</button>
+            <button type="submit" class="btn btn-success">Register</button>
             <div class="login-register">
                 <p>Already have an account?
                     <a href="login.jsp" class="login-link">Login</a>
@@ -62,7 +63,6 @@
 
 </body>
 <script src="assets/js/register.js"></script>
-
 
 
 </html>

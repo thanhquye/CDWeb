@@ -20,9 +20,6 @@ public class RegisterController extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-
-
-
         UserDAO userDAO = new UserDAO();
         boolean check = userDAO.registerUser(userName, email, password);
 
@@ -32,7 +29,7 @@ public class RegisterController extends HttpServlet {
         } else {
             req.setAttribute("status", "failed");
         }
-        req.getRequestDispatcher("register.jsp").forward(req,resp);
+        req.getRequestDispatcher("register.jsp").forward(req, resp);
         System.out.println(req.getAttribute("status"));
 
     }
