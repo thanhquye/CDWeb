@@ -12,6 +12,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -36,9 +37,9 @@
             </div>
             <div class="remenber-forgot">
                 <label><input type="checkbox">Remenber me</label>
-                <a href="#">Forgot Password?</a>
+                <a href="forgetPass.jsp">Forgot Password?</a>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn btn-success">Login</button>
             <div class="login-register">
                 <p>Don't have an account?
                     <a href="register.jsp" class="register-link">Register</a>
@@ -54,8 +55,9 @@
     var status = document.getElementById("status").value;
     // console.log(status);
     if (status === "failed") {
-       swal ("Sorry", "Email or Password is incorrect", "error")
+        swal("Sorry", "Email or Password is incorrect", "error")
     }
 </script>
+
 </body>
 </html>

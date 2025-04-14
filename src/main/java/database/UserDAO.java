@@ -305,4 +305,59 @@ public class UserDAO {
 
     }
 
+    /**
+     * Cập nhật mật khẩu mới dựa vào email của người dùng.
+     *
+     * @param email       Email của người dùng cần cập nhật mật khẩu.
+     * @param newPassword Mật khẩu mới cần cập nhật.
+     * @return true nếu cập nhật thành công, false nếu thất bại.
+     */
+    public boolean updatePasswordByEmail(String email, String newPassword) {
+        Connection connection = null;
+        try {
+            // Lấy kết nối tới database thông qua JDBCUtil
+            connection = JDBCUtil.getConnection();
+
+            // Câu lệnh SQL: cập nhật mật khẩu theo email
+            String sql = "UPDATE userlogin SET userPassword = ? WHERE email = ?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, newPassword);
+            ps.setString(2, email);
+
+            // Thực hiện update, nếu số dòng update > 0 tức là cập nhật thành công
+            int rowsUpdated = ps.executeUpdate();
+            return (rowsUpdated > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            JDBCUtil.closeConnection(connection);
+        }
+    }
+
+    // kiểm tra xem gmail có tồn tại không
+    // chức năng forgot password
+    public boolean isEmailExists(String email) {
+        // Khai báo kết nối và PreparedStatement
+        try (Connection conn = JDBCUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM userlogin WHERE email = ?")) {
+
+            // Set giá trị email vào câu truy vấn
+            stmt.setString(1, email);
+
+            // Thực thi câu lệnh truy vấn và lấy kết quả
+            ResultSet rs = stmt.executeQuery();
+
+            // Nếu có kết quả trả về, kiểm tra số lượng kết quả (nếu > 0, tức là email đã tồn tại)
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;  // Nếu không có kết quả hoặc có lỗi xảy ra, trả về false
+    }
+
+
 }
