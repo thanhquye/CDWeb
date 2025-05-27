@@ -10,16 +10,16 @@
           <div class="right-side">
             <div class="row footer-about" style="text-align: center">
               <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="../Movie_Ticket_Website/assets/movie-image/lat-mat-6.png" alt=""></a>
+                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/lat-mat-6.png" alt=""></a>
                 </div>
                 <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="../Movie_Ticket_Website/assets/movie-image/nha-ba-nu.png" alt=""></a>
+                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/nha-ba-nu.png" alt=""></a>
                 </div>
                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="../Movie_Ticket_Website/assets/movie-image/wonka.png" alt=""></a>
+                <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/wonka.png" alt=""></a>
                 </div>
                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                <a href="movie-servlet?action=init"><img  style="height: 250px; width: 200px" class="img-fluid" src="../Movie_Ticket_Website/assets/movie-image/mai.png" alt=""></a>
+                <a href="movie-servlet?action=init"><img  style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/mai.png" alt=""></a>
                </div>
             </div>
             <div class="row footer-links">

@@ -47,21 +47,27 @@
 <section class="w3l-main-slider position-relative" id="home">
     <div class="companies20-content">
         <div class="owl-one owl-carousel owl-theme">
-            <c:forEach items="${top4NewestMovies}" var="newestMovie" >
+            <c:forEach items="${top4NewestMovies}" var="newestMovie" varStatus="loop">
                 <div class="item">
                     <li>
-                        <div class="slider-info banner-view"  style="background: url(../assets/movie-image/${newestMovie.linkMovieImage}<%=request.getAttribute("")%>) no-repeat center; background-size: cover; " >
+                        <div class="slider-info banner-view"  style="background: url(${pageContext.request.contextPath}/assets/movie-image/${newestMovie.linkMovieImage}) no-repeat center; background-size: cover; " >
                             <div class="banner-info">
                                 <h3>${newestMovie.movieName}</h3>
                                 <p><span>${newestMovie.movieContent}</span></p>
-                                    <a href="#small-dialog" class="popup-with-zoom-anim play-view1">
-									<span class="video-play-icon">
+                                    <a href="#small-dialog${loop.index}" class="popup-with-zoom-anim play-view1">
+                                        <p>${newestMovie.movieName}</p>
+									    <span class="video-play-icon">
 										<span class="fa fa-play"></span>
 									</span>
                                     <h6>Xem Trailer</h6>
-                                </a>
-                                <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-                                    <iframe width="832" height="349" src="${newestMovie.linkMovieTrailer}" title="${newestMovie.movieName} - OFFICIAL TRAILER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    </a>
+                                <div id="small-dialog${loop.index}" class="zoom-anim-dialog mfp-hide">
+                                    <iframe
+                                            width="832" height="349"
+                                            src="${newestMovie.linkMovieTrailer}"
+                                            title="${newestMovie.movieName} - OFFICIAL TRAILER"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +98,7 @@
                             <div class="box16 mb-0">
                                 <a href="movieDetail-servlet?action=init&movieID=${m.movieID}">
                                     <figure>
-                                        <img class="img-fluid" src="../assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  300px">
+                                        <img class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  300px">
                                     </figure>
                                     <div class="box-content">
                                         <h4> <span class="post"><span class="fa fa-clock-o"></span> ${m.duration} </span>
@@ -143,7 +149,7 @@
                         <div class="box16">
                                 <a href="movieDetail-servlet?action=init&movieID=${m.movieID}">
                                     <figure>
-                                        <img class="img-fluid" src="../assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  350px">
+                                        <img class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  350px">
                                     </figure>
                                     <div class="box-content">
                                         <h2 class="title" style="font-weight: bolder" >${m.movieName}</h2>
@@ -169,7 +175,7 @@
                 <div class="item">
                     <li>
                         <div class="slider-info mid-view"
-                             style = "background: url(../assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover; ">
+                             style = "background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover; ">
                             <div class="container">
                                 <div class="mid-info">
                                     <span class="sub-text"> ${m.movieCategory} </span>
@@ -272,7 +278,7 @@
                                             <%-- hien thi cac phim trong ngay duoc chon --%>
                                             <div class="card">
                                                 <div class="card-body"
-                                                     style="background: url(../assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
+                                                     style="background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
                                                     <h5 class="card-title" style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
                                                     <p class="card-text" style="color: whitesmoke;">${m.movieDescription}</p>
                                                     <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
@@ -299,7 +305,7 @@
                     <div class="col">
                         <div class="card" style="width: 18rem; height: 10rem;background-color: rgba(108,117,125,0.65) ">
                             <div class="card-body"
-                                 style="background: url(../assets/movie-image/${c.linkMovieImage}) no-repeat center; background-size: cover;border-radius: 5px;">
+                                 style="background: url(${pageContext.request.contextPath}/assets/movie-image/${c.linkMovieImage}) no-repeat center; background-size: cover;border-radius: 5px;">
                                 <h5 class="card-title" style="color: #ffffff;height: 3rem;border-radius: 5px;background-color: rgba(108,117,125,0.3)">
                                     <a href="movieDetail-servlet?action=init&movieID=${c.movieID}">${c.movieName}</a>
                                 </h5>

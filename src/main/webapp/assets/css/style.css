@@ -18443,7 +18443,9 @@ ul.page-numbers li a:hover {
 .mfp-inline-holder .mfp-content,
 .mfp-ajax-holder .mfp-content {
     width: 100%;
+    padding-top: 80px;
     cursor: auto;
+    height: inherit;
 }
 
 .mfp-ajax-cur {
@@ -18820,6 +18822,7 @@ screen and (max-height: 300px) {
 
 /* Styles for dialog window */
 #small-dialog,
+#small-dialog0,
 #small-dialog1,
 #small-dialog2,
 #small-dialog3,
@@ -18832,6 +18835,7 @@ screen and (max-height: 300px) {
 }
 
 div#small-dialog iframe,
+div#small-dialog0 iframe,
 div#small-dialog1 iframe,
 div#small-dialog2 iframe,
 div#small-dialog3 iframe,

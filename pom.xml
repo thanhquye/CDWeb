@@ -47,7 +47,11 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>9.2.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -58,5 +62,14 @@
                 <version>3.3.2</version>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>assets/**</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>
