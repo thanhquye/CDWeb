@@ -91,24 +91,26 @@
                                 <div class="row">
                                     <%-- hiện allMovie khi gọi init hoặc search không có phim--%>
                                     <c:if test="${isShowAllCinema || movieFilteredByNameSize == 0}">
-                                        <c:forEach items="${allMovies}" var="m">
+                                        <c:forEach items="${allMovies}" var="m" varStatus="loop">
                                             <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                 <div class="slider-info">
                                                     <div class="img-circle">
-                                                        <a href="#small-dialog" class="popup-with-zoom-anim play-view1">
+                                                        <a href="#small-dialog${loop.index}"
+                                                           class="popup-with-zoom-anim play-view1">
                                                             <img class="img-fluid"
-                                                                 src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}"
+                                                                 src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
                                                                  alt="" style="height: 200px">
                                                             <div class="overlay-icon"><span
                                                                     class="fa fa-play video-icon"
                                                                     aria-hidden="true"></span></div>
                                                         </a>
-                                                        <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-                                                            <iframe width="832" height="349" src="${m.linkMovieTrailer}"
+                                                        <div id="small-dialog${loop.index}" class="zoom-anim-dialog mfp-hide" style="max-width: 750px;margin: 40px auto;position: relative;">
+                                                            <iframe style=" width: 100%;height: 400px;display: block;border-radius: 10px;"
+                                                                    width="832" height="349"
+                                                                    src="${m.linkMovieTrailer}"
                                                                     title="${m.movieName} - OFFICIAL TRAILER"
                                                                     frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                         </div>
                                                     </div>
                                                     <div class="message">
@@ -127,25 +129,26 @@
                                     </c:if>
                                     <%-- hiện allMovie khi gọi init hoặc search không có phim--%>
                                     <c:if test="${movieFilteredByCategory != null}">
-                                        <c:forEach items="${movieFilteredByCategory}" var="m">
+                                        <c:forEach items="${movieFilteredByCategory}" var="m" varStatus="loop">
                                             <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                 <div class="slider-info">
                                                     <div class="img-circle">
-                                                        <a href="#small-dialog1"
+                                                        <a href="#small-dialog${loop.index}"
                                                            class="popup-with-zoom-anim play-view1">
                                                             <img class="img-fluid"
-                                                                 src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}"
+                                                                 src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
                                                                  alt="" style="height: 200px">
                                                             <div class="overlay-icon"><span
                                                                     class="fa fa-play video-icon"
                                                                     aria-hidden="true"></span></div>
                                                         </a>
-                                                        <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
-                                                            <iframe width="832" height="349" src="${m.linkMovieTrailer}"
+                                                        <div id="small-dialog${loop.index}" class="zoom-anim-dialog mfp-hide" style="max-width: 750px;margin: 40px auto;position: relative;">
+                                                            <iframe style=" width: 100%;height: 400px;display: block;border-radius: 10px;"
+                                                                    width="832" height="349"
+                                                                    src="${m.linkMovieTrailer}"
                                                                     title="${m.movieName} - OFFICIAL TRAILER"
                                                                     frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                         </div>
                                                     </div>
                                                     <div class="message">
@@ -163,25 +166,26 @@
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${movieFilteredByCountry != null}">
-                                        <c:forEach items="${movieFilteredByCountry}" var="m">
+                                        <c:forEach items="${movieFilteredByCountry}" var="m" varStatus="loop">
                                             <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                 <div class="slider-info">
                                                     <div class="img-circle">
-                                                        <a href="#small-dialog1"
+                                                        <a href="#small-dialog${loop.index}"
                                                            class="popup-with-zoom-anim play-view1">
                                                             <img class="img-fluid"
-                                                                 src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}"
+                                                                 src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
                                                                  alt="" style="height: 200px">
                                                             <div class="overlay-icon"><span
                                                                     class="fa fa-play video-icon"
                                                                     aria-hidden="true"></span></div>
                                                         </a>
-                                                        <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
-                                                            <iframe width="832" height="349" src="${m.linkMovieTrailer}"
+                                                        <div id="small-dialog${loop.index}" class="zoom-anim-dialog mfp-hide" style="max-width: 750px;margin: 40px auto;position: relative;">
+                                                            <iframe style=" width: 100%;height: 400px;display: block;border-radius: 10px;"
+                                                                    width="832" height="349"
+                                                                    src="${m.linkMovieTrailer}"
                                                                     title="${m.movieName} - OFFICIAL TRAILER"
                                                                     frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                         </div>
                                                     </div>
                                                     <div class="message">
@@ -199,25 +203,26 @@
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${movieFilteredByYear != null}">
-                                        <c:forEach items="${movieFilteredByYear}" var="m">
+                                        <c:forEach items="${movieFilteredByYear}" var="m" varStatus="loop">
                                             <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                 <div class="slider-info">
                                                     <div class="img-circle">
-                                                        <a href="#small-dialog1"
+                                                        <a href="#small-dialog${loop.index}"
                                                            class="popup-with-zoom-anim play-view1">
                                                             <img class="img-fluid"
-                                                                 src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}"
+                                                                 src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
                                                                  alt="" style="height: 200px">
                                                             <div class="overlay-icon"><span
                                                                     class="fa fa-play video-icon"
                                                                     aria-hidden="true"></span></div>
                                                         </a>
-                                                        <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
-                                                            <iframe width="832" height="349" src="${m.linkMovieTrailer}"
+                                                        <div id="small-dialog${loop.index}" class="zoom-anim-dialog mfp-hide" style="max-width: 750px;margin: 40px auto;position: relative;">
+                                                            <iframe style=" width: 100%;height: 400px;display: block;border-radius: 10px;"
+                                                                    width="832" height="349"
+                                                                    src="${m.linkMovieTrailer}"
                                                                     title="${m.movieName} - OFFICIAL TRAILER"
                                                                     frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                         </div>
                                                     </div>
                                                     <div class="message">
@@ -235,25 +240,26 @@
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${movieFilteredByName != null}">
-                                        <c:forEach items="${movieFilteredByName}" var="m">
+                                        <c:forEach items="${movieFilteredByName}" var="m" varStatus="loop">
                                             <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                 <div class="slider-info">
                                                     <div class="img-circle">
-                                                        <a href="#small-dialog1"
+                                                        <a href="#small-dialog${loop.index}"
                                                            class="popup-with-zoom-anim play-view1">
                                                             <img class="img-fluid"
-                                                                 src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}"
+                                                                 src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
                                                                  alt="" style="height: 200px">
                                                             <div class="overlay-icon"><span
                                                                     class="fa fa-play video-icon"
                                                                     aria-hidden="true"></span></div>
                                                         </a>
-                                                        <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
-                                                            <iframe width="832" height="349" src="${m.linkMovieTrailer}"
+                                                        <div id="small-dialog${loop.index}" class="zoom-anim-dialog mfp-hide" style="max-width: 750px;margin: 40px auto;position: relative;">
+                                                            <iframe style=" width: 100%;height: 400px;display: block;border-radius: 10px;"
+                                                                    width="832" height="349"
+                                                                    src="${m.linkMovieTrailer}"
                                                                     title="${m.movieName} - OFFICIAL TRAILER"
                                                                     frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                         </div>
                                                     </div>
                                                     <div class="message">
@@ -300,7 +306,8 @@
                         <div class="box16 mb-0">
                             <figure>
                                 <img class="img-fluid"
-                                     src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}" alt=""
+                                     src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
+                                     alt=""
                                      style="height: 350px">
                             </figure>
                             <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" data-toggle="modal">
@@ -330,7 +337,8 @@
                         <div class="box16 mb-0">
                             <figure>
                                 <img class="img-fluid"
-                                     src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}" alt=""
+                                     src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
+                                     alt=""
                                      style="height: 350px">
                             </figure>
                             <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" data-toggle="modal">
@@ -359,7 +367,8 @@
                         <div class="box16 mb-0">
                             <figure>
                                 <img class="img-fluid"
-                                     src="../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}" alt=""
+                                     src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
+                                     alt=""
                                      style="height: 350px">
                             </figure>
                             <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" data-toggle="modal">
@@ -389,6 +398,12 @@
 <jsp:include page="layout-view/script-libraries.jsp"></jsp:include>
 <jsp:include page="layout-view/js-function-slider.jsp"></jsp:include>
 
+
+<script src="assets/js/jquery-1.9.1.min.js"></script>
+<script src="assets/js/easyResponsiveTabs.js"></script>
+<!--/theme-change-->
+<script src="assets/js/theme-change.js"></script>
+<script src="assets/js/owl.carousel.js"></script>
 <script src="assets/js/main.js"></script>
 
 </body>

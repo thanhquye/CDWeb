@@ -21,11 +21,11 @@
 </div>
 
 <%-- Section thể hiện chi tiết phim--%>
-<section class="film-detail" style="background: url(../Movie_Ticket_Website/assets/movie-image/${movie.linkMovieImage}) no-repeat center ; background-size: cover; position: relative;overflow: hidden">
+<section class="film-detail" style="background: url(${pageContext.request.contextPath}/assets/movie-image/${movie.linkMovieImage}) no-repeat center ; background-size: cover; position: relative;overflow: hidden">
     <div class="container" id="film-detailBackground">
         <div class="row">
             <div class="col-4" id="film-detail__poster" >
-                <img src="../Movie_Ticket_Website/assets/movie-image/${movie.linkMovieImage}" id="poster" alt="" style="border: 2px groove whitesmoke;">
+                <img src="${pageContext.request.contextPath}/assets/movie-image/${movie.linkMovieImage}" id="poster" alt="" style="border: 2px groove whitesmoke;">
             </div>
             <div class="col-8" id="film-detail__context" style="; margin: 25px 0px ; padding-left: 0px" >
                 <div class="film-detail__txt" id="filmCategory-detail">Thể loại : ${movie.movieCategory}</div>
@@ -142,7 +142,7 @@
                                         <%-- hien thi cac phim trong ngay duoc chon --%>
                                         <div class="card">
                                             <div class="card-body"
-                                                 style="background: url(../Movie_Ticket_Website/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
+                                                 style="background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
                                                 <h5 class="card-title" style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
                                                 <p class="card-text" style="color: whitesmoke;">${m.movieDescription}</p>
                                                 <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
