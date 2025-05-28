@@ -1,0 +1,34 @@
+.gmail-verify-wrapper {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.gmail-verify-wrapper h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.gmail-verify-wrapper .email {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.gmail-verify-wrapper .message {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.gmail-verify-wrapper .resend-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.gmail-verify-wrapper .resend-link:hover {
+    background-color: #0056b3;
+}

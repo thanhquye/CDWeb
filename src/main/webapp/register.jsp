@@ -46,10 +46,11 @@
                 <label>Retype Password</label>
                 <small>error message</small>
             </div>
-            <div class="remenber-forgot">
-                <label><input type="checkbox">I agree to the terms & conditions</label>
-
-            </div>
+<%--            <div class="remenber-forgot">--%>
+<%--                <label>--%>
+<%--                    <input type="checkbox" required> I agree to the terms &amp; conditions--%>
+<%--                </label>--%>
+<%--            </div>--%>
             <button type="submit" class="btn btn-success">Register</button>
             <div class="login-register">
                 <p>Already have an account?

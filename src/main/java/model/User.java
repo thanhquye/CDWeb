@@ -7,8 +7,11 @@ public class User {
     String password;
     boolean isActive;
     boolean isAdmin;
+    boolean isVerifyEmail;
 
-    public User() {}
+    public User() {
+    }
+
     public User(String userId, String userName, String email, String password, boolean isActive, boolean isAdmin) {
         this.userId = userId;
         this.userName = userName;
@@ -16,6 +19,14 @@ public class User {
         this.password = password;
         this.isActive = isActive;
         this.isAdmin = isAdmin;
+    }
+
+    public boolean isVerifyEmail() {
+        return isVerifyEmail;
+    }
+
+    public void setVerifyEmail(boolean verifyEmail) {
+        isVerifyEmail = verifyEmail;
     }
 
     public String getUserId() {
@@ -77,4 +88,5 @@ public class User {
                 ", isAdmin=" + isAdmin +
                 '}';
     }
+
 }
