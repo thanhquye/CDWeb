@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "ValidateEmail", value = "/validate-email")
 public class ValidateEmailController extends HttpServlet {
+//    Của forgot-pass
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

@@ -23,26 +23,26 @@
 <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 <div class="form">
     <div class="form-box login">
-        <h2>Login</h2>
-        <form action="login" method="get">
+        <h2>Đăng nhập</h2>
+        <form action="login" method="post">
             <div class="input-box">
                 <span class="icon"><ion-icon name="mail-open"></ion-icon></span>
                 <input type="email" name="email" required>
-                <label>Email</label>
+                <label>Email:</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
                 <input type="password" name="password" required>
-                <label>Password</label>
+                <label>Mật khẩu:</label>
             </div>
             <div class="remenber-forgot">
-<%--                <label><input type="checkbox">Remenber me</label>--%>
-                <a href="forgetPass.jsp">Forgot Password?</a>
+                <%--                <label><input type="checkbox">Remenber me</label>--%>
+                <a href="forgotPass.jsp">Quên mật khẩu?</a>
             </div>
-            <button type="submit" class="btn btn-success">Login</button>
+            <button type="submit" class="btn btn-success">Đăng nhập</button>
             <div class="login-register">
-                <p>Don't have an account?
-                    <a href="register.jsp" class="register-link">Register</a>
+                <p>Chưa có tài khoản?
+                    <a href="register.jsp" class="register-link">Đăng ký</a>
                 </p>
             </div>
 
@@ -55,7 +55,7 @@
     var status = document.getElementById("status").value;
     // console.log(status);
     if (status === "failed") {
-        swal("Sorry", "Email or Password is incorrect", "error")
+        swal("Rất tiếc", "Email hoặc Mật khẩu không chính xác!!", "error")
     }
 </script>
 

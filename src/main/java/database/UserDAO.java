@@ -50,6 +50,7 @@ public class UserDAO {
                 user.setPassword(rs.getString("userPassword"));
                 user.setActive(rs.getBoolean("isActive"));
                 user.setAdmin(rs.getBoolean("isAdmin"));
+                user.setVerifyEmail(rs.getBoolean("isVerifyEmail"));
                 return user;
             }
         } catch (SQLException e) {
@@ -61,47 +62,91 @@ public class UserDAO {
     }
 
 
+//    public boolean registerUser(String userName, String email, String password) {
+//        Connection connection = null;
+//        int maxID = 0;
+//        try {
+//            connection = JDBCUtil.getConnection();
+//            String maxIdQuery = "select userID from userlogin";
+//            PreparedStatement idPr = connection.prepareStatement(maxIdQuery);
+//            ResultSet rsId = idPr.executeQuery();
+//            while (rsId.next()) {
+//                String id = rsId.getString("userID").substring(4);
+//                int intID = Integer.parseInt(id);
+//                if (intID > maxID) {
+//                    maxID = intID;
+//                }
+//            }
+//            try {
+//                String insertQuery = "insert into userlogin values (?, ?, ? , ?, ?,?) ";
+//                PreparedStatement insertPr = connection.prepareStatement(insertQuery);
+//                insertPr.setString(1, "user" + (maxID + 1));
+//                insertPr.setString(2, userName);
+//                insertPr.setString(3, email);
+//                insertPr.setString(4, password);
+//                insertPr.setInt(5, 1);
+//                insertPr.setInt(6, 0);
+//                int insertRs = insertPr.executeUpdate();
+//                if (insertRs > 0) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//
+//            } catch (SQLException e) {
+//                throw new RuntimeException(e);
+//
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        } finally {
+//            JDBCUtil.closeConnection(connection);
+//        }
+//
+//    }
+
+    // Register
     public boolean registerUser(String userName, String email, String password) {
         Connection connection = null;
         int maxID = 0;
+
         try {
             connection = JDBCUtil.getConnection();
-            String maxIdQuery = "select userID from userlogin";
+
+            // Lấy userID lớn nhất
+            String maxIdQuery = "SELECT userID FROM userlogin";
             PreparedStatement idPr = connection.prepareStatement(maxIdQuery);
             ResultSet rsId = idPr.executeQuery();
             while (rsId.next()) {
-                String id = rsId.getString("userID").substring(4);
+                String id = rsId.getString("userID").substring(4); // giả sử ID dạng "user001"
                 int intID = Integer.parseInt(id);
                 if (intID > maxID) {
                     maxID = intID;
                 }
             }
-            try {
-                String insertQuery = "insert into userlogin values (?, ?, ? , ?, ?,?) ";
-                PreparedStatement insertPr = connection.prepareStatement(insertQuery);
-                insertPr.setString(1, "user" + (maxID + 1));
-                insertPr.setString(2, userName);
-                insertPr.setString(3, email);
-                insertPr.setString(4, password);
-                insertPr.setInt(5, 1);
-                insertPr.setInt(6, 0);
-                int insertRs = insertPr.executeUpdate();
-                if (insertRs > 0) {
-                    return true;
-                } else {
-                    return false;
-                }
 
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            // Tạo ID mới
+            String newUserID = "user" + String.format("%03d", maxID + 1);
 
-            }
+            // Chèn người dùng mới
+            String insertQuery = "INSERT INTO userlogin (userID, userName, email, userPassword, isActive, isAdmin, isVerifyEmail) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement insertPr = connection.prepareStatement(insertQuery);
+            insertPr.setString(1, newUserID);
+            insertPr.setString(2, userName);
+            insertPr.setString(3, email);
+            insertPr.setString(4, password);
+            insertPr.setInt(5, 1);  // isActive
+            insertPr.setInt(6, 0);  // isAdmin
+            insertPr.setInt(7, 0);  // isVerifyEmail (chưa xác thực)
+
+            int insertRs = insertPr.executeUpdate();
+            return insertRs > 0;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             JDBCUtil.closeConnection(connection);
         }
-
     }
 
     public ArrayList<User> getAllUser() {
@@ -398,6 +443,29 @@ public class UserDAO {
             JDBCUtil.closeConnection(connection);
         }
         return user;
+    }
+
+    public boolean checkUsernameExist(String username) {
+        Connection connection = null;
+        boolean exists = false;
+
+        try {
+            connection = JDBCUtil.getConnection();
+            String query = "SELECT 1 FROM userlogin WHERE userName = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                exists = true; // đã tồn tại
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Lỗi kiểm tra username: " + e.getMessage(), e);
+        } finally {
+            JDBCUtil.closeConnection(connection);
+        }
+
+        return exists;
     }
 
 }

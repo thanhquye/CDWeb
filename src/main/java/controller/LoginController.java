@@ -21,7 +21,7 @@ import java.io.IOException;
 @WebServlet(name = "login", value = "/login")
 public class LoginController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // đặt encoding cho req, resp
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
@@ -33,7 +33,6 @@ public class LoginController extends HttpServlet {
         User user = userDAO.getUserbyEmailAndPassword(email, password);
         HttpSession session = req.getSession();
         if (user != null) {
-            CustomerDAO customerDAO = new CustomerDAO();
             Customer customer = CustomerDAO.getCustomerByUserId(user.getUserId());
 
             session.setAttribute("user", user);
@@ -45,15 +44,12 @@ public class LoginController extends HttpServlet {
                 resp.sendRedirect("adminHome");
             } else {
                 req.getRequestDispatcher("index.jsp").forward(req, resp);
-                return;
             }
 
         } else {
             System.out.println("user null");
             req.setAttribute("status", "failed");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
-            return;
-
         }
 
     }
