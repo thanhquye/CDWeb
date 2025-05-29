@@ -157,6 +157,14 @@
                     <include>assets/**</include>
                 </includes>
             </resource>
+            <!-- Cấu hình copy file .env từ src/main/resources -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.env</include>
+                </includes>
+            </resource>
         </resources>
+
     </build>
 </project>

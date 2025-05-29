@@ -1,4 +1,3 @@
-
 const form = document.getElementById('form');
 const password = document.getElementById('password');
 const retypePassword = document.getElementById('retypePassword');
@@ -37,14 +36,3 @@ function setErrorFor(input, message) {
     formControl.className = 'input-box error';
     small.innerText = message;
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -36,7 +36,7 @@
                 <label>Password</label>
             </div>
             <div class="remenber-forgot">
-                <label><input type="checkbox">Remenber me</label>
+<%--                <label><input type="checkbox">Remenber me</label>--%>
                 <a href="forgetPass.jsp">Forgot Password?</a>
             </div>
             <button type="submit" class="btn btn-success">Login</button>

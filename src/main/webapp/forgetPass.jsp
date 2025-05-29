@@ -14,9 +14,8 @@
 <div class="form">
     <div class="form-box login">
         <h2>Forgot Password</h2>
-        <!-- Không cần dùng thẻ <form> nếu hoàn toàn dùng AJAX -->
         <div class="input-box">
-            <span class="icon"><!-- có thể thêm icon ở đây --></span>
+            <span class="icon"></span>
             <input type="email" name="email" id="emailInput" placeholder="Nhập gmail của bạn..." required>
             <label>Email</label>
             <div id="emailValidationMessage"

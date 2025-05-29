@@ -359,5 +359,45 @@ public class UserDAO {
         return false;  // Nếu không có kết quả hoặc có lỗi xảy ra, trả về false
     }
 
+    //    xác thực gmail
+    public void markEmailVerified(String email) {
+        try (Connection conn = JDBCUtil.getConnection()) {
+            String sql = "UPDATE userlogin SET isVerifyEmail = true WHERE email = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Lỗi xác minh email: " + e.getMessage(), e);
+        }
+    }
+
+    public User getUserByEmail(String email) {
+        Connection connection = null;
+        User user = null;
+
+        try {
+            connection = JDBCUtil.getConnection();
+            String query = "SELECT * FROM userlogin WHERE email = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                user = new User();
+                user.setUserId(rs.getString("userId"));
+                user.setUserName(rs.getString("userName"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("userPassword"));
+                user.setActive(rs.getBoolean("isActive"));
+                user.setAdmin(rs.getBoolean("isAdmin"));
+                user.setVerifyEmail(rs.getBoolean("isVerifyEmail"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Lỗi lấy user theo email: " + e.getMessage(), e);
+        } finally {
+            JDBCUtil.closeConnection(connection);
+        }
+        return user;
+    }
 
 }
