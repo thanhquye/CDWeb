@@ -1,0 +1,30 @@
+.input-box {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.input-box small {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* Trạng thái lỗi */
+.input-box.error small {
+    visibility: visible;
+    color: #ff1800 !important;
+}
+
+/* Trạng thái hợp lệ */
+.input-box.success small {
+    visibility: visible;
+    color: #5fff83 !important;
+}
+
+/* Cho nút Register */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
