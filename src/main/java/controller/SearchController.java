@@ -1,7 +1,6 @@
 package controller;
 
 import database.CommentDAO;
-import database.FilmDAO;
 import database.TicketDAO;
 import database.UserDAO;
 import jakarta.servlet.ServletException;
@@ -52,8 +51,8 @@ public class SearchController extends HttpServlet {
             }
         } else if (Fid.equals("1")) {
             if (!id.isEmpty()) {
-                FilmDAO filmDAO = new FilmDAO();
-                req.setAttribute("filmListS", filmDAO.getAllFilmByName(id));
+//                FilmDAO filmDAO = new FilmDAO();
+//                req.setAttribute("filmListS", filmDAO.getAllFilmByName(id));
                 req.setAttribute("showAll", false);
                 req.getRequestDispatcher("quanliphim.jsp").forward(req, resp);
             } else {

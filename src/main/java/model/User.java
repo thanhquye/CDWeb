@@ -1,6 +1,7 @@
 package model;
 
 public class User {
+    int stt;
     String userId;
     String userName;
     String email;
@@ -64,6 +65,14 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public int getStt() {
+        return stt;
+    }
+
+    public void setStt(int stt) {
+        this.stt = stt;
     }
 
     @Override

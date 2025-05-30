@@ -1,4 +1,4 @@
-<%@ page import="model.Film" %>
+<%@ page import="model.MovieMediaLink" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -310,58 +310,53 @@
             <div>
                 <div class="card">
                     <div class="card-body">
-                        <% Film film = (Film) request.getAttribute("film");%>
+                        <% MovieMediaLink movie = (MovieMediaLink) request.getAttribute("movies");%>
                                 <div class="modal-content">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Sửa thông tin</h4>
+                                        <h4 class="modal-title">Chi tiết và chỉnh sửa</h4>
                                         <button type="button" class="close" data-dismiss="modal"></button>
                                     </div>
 
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <!-- Đặt nội dung form ở đây -->
-                                        <form action="update?sid=null&fid=<%=film.getMovieID()%>" method="post">
-
-                                            <div class="form-group">
-                                                <label>Id </label>
-                                                <input type="text" class="form-control" name="id" value="<%=film.getMovieID()%>" readonly>
-                                            </div>
+                                        <form action="updateMovie?mid=<%=movie.getMovieID()%>" method="post">
                                             <div class="form-group">
                                                 <label>Tên </label>
-                                                <input type="text" class="form-control" name="name" value="<%=film.getMovieName()%>">
+                                                <input type="text" class="form-control" name="name" value="<%=movie.getMovieName()%>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Thể loại</label>
-                                                <input type="text" class="form-control" name="category" value="<%=film.getMovieCategory()%>">
+                                                <input type="text" class="form-control" name="category" value="<%=movie.getMovieCategory()%>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Ngày phát hành</label>
-                                                <input type="text" class="form-control" name="releaseDate" placeholder="yyyy-MM-dd" value="<%=film.getReleaseDate()%>">
+                                                <input type="text" class="form-control" name="releaseDate" placeholder="yyyy-MM-dd" value="<%=movie.getReleaseDate()%>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Tác giả</label>
-                                                <input type="text" class="form-control" name="director" value="<%=film.getDirector()%>">
+                                                <input type="text" class="form-control" name="director" value="<%=movie.getDirector()%>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Thời gian</label>
-                                                <input type="text" class="form-control" name="duration" value="<%=film.getDuration()%>">
+                                                <input type="text" class="form-control" name="duration" value="<%=movie.getDuration()%>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Quốc gia</label>
-                                                <input type="text" class="form-control" name="country" value="<%=film.getCountry()%>">
+                                                <input type="text" class="form-control" name="country" value="<%=movie.getCountry()%>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Mô tả</label>
                                                 <div>
-                                                    <textarea class="form-control" name="description" ><%=film.getMovieDescription()%></textarea>
+                                                    <textarea class="form-control" name="description" ><%=movie.getMovieDescription()%></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Nội dung</label>
                                                 <div>
-                                                    <textarea class="form-control" name="content" ><%=film.getMovieContent()%></textarea>
+                                                    <textarea class="form-control" name="content" ><%=movie.getMovieContent()%></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -369,14 +364,14 @@
                                                 <div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="isPublished" value="true"
-                                                               id="flexRadioDefault1" <%=film.isPublished()?"checked":""%>>
+                                                               id="flexRadioDefault1" <%=movie.getIsPublished()==1?"checked":""%>>
                                                         <label class="form-check-label" for="flexRadioDefault1">
                                                             Đã chiếu
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="isPublished" value="false"
-                                                               id="flexRadioDefault2" <%=film.isPublished()?"":"checked"%>>
+                                                               id="flexRadioDefault2" <%=movie.getIsPublished()==1?"":"checked"%>>
                                                         <label class="form-check-label" for="flexRadioDefault2">
                                                             Chưa chiếu
                                                         </label>
@@ -385,7 +380,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Đánh giá</label>
-                                                <input type="text" class="form-control" name="score" value="<%=film.getMovieScore()%>">
+                                                <input type="text" class="form-control" name="score" value="<%=movie.getMovieScore()%>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Link trailer</label>
+                                                <input type="text" class="form-control" name="score" value="<%=movie.getLinkMovieTrailer()%>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Link ảnh</label>
+                                                <input type="text" class="form-control" name="score" value="<%=movie.getLinkMovieImage()%>">
                                             </div>
                                             <div class="modal-footer">
                                                 <a href="quanliphim">

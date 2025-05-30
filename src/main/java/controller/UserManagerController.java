@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.sql.*;
 
 @WebServlet(name = "quanlinguoidung", value = "/quanlinguoidung")
-public class UserController extends HttpServlet {
+public class UserManagerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     req.setCharacterEncoding("UTF-8");
@@ -27,7 +27,7 @@ public class UserController extends HttpServlet {
         resp.sendRedirect("404.jsp");
     }else {
         UserDAO userDAO = new UserDAO();
-        req.setAttribute("userList", userDAO.getAllUser());
+        req.setAttribute("userList", userDAO.getAllUserBySTT());
         req.setAttribute("showAll", true);
         req.getRequestDispatcher("quanlinguoidung.jsp").forward(req,resp);
 

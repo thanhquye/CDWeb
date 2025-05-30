@@ -2,7 +2,11 @@ package model;
 
 public class Ticket {
 
-
+    int stt;
+    String fullName;
+    String sdt;
+    String movieName;
+    String cinemaName;
     String ticketID;
     String cinemaID;
     String showtimeID;
@@ -42,6 +46,45 @@ public class Ticket {
         this.showtimeID = showtimeID;
     }
 
+    public int getStt() {
+        return stt;
+    }
+
+    public void setStt(int stt) {
+        this.stt = stt;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public String getCinemaName() {
+        return cinemaName;
+    }
+
+    public void setCinemaName(String cinemaName) {
+        this.cinemaName = cinemaName;
+    }
 
     @Override
     public String toString() {

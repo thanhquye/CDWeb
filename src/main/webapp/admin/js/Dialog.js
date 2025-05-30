@@ -8,7 +8,7 @@ function Dialog(idForm, idBtn, where, attribute, type) {
         btnDelete.addEventListener('click', async () => {
 
             const xhr = new XMLHttpRequest();
-            const url = `http://localhost:8080/Movie_Ticket_Website_war/${where}?${attribute}=${id}`;
+            const url = `http://localhost:8080/Movie_Ticket_Website_war_exploded/${where}?${attribute}=${id}`;
 
 
             xhr.open(type === 'delete' ? 'DELETE' : type === 'put' ? 'PUT' : 'POST', url, true);

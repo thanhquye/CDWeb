@@ -136,6 +136,40 @@ public class UserDAO {
         }
         return userList;
     }
+    public ArrayList<User> getAllUserBySTT() {
+        Connection connection = null;
+        ArrayList<User> list = new ArrayList<>();
+        ArrayList<User> userList = new ArrayList<>();
+        int i = 0;
+        try {
+            connection = JDBCUtil.getConnection();
+            String query = "select * from userlogin";
+            PreparedStatement pr = connection.prepareStatement(query);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setStt(i++);
+                user.setUserId(rs.getString("userId"));
+                user.setUserName(rs.getString("userName"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("userPassword"));
+                user.setActive(rs.getBoolean("isActive"));
+                user.setAdmin(rs.getBoolean("isAdmin"));
+                list.add(user);
+            }
+            for (User user : list) {
+                if (!user.isAdmin()) {
+                    userList.add(user);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            JDBCUtil.closeConnection(connection);
+        }
+        return userList;
+    }
 
     public ArrayList<User> getAllAdimin() {
         Connection connection = null;

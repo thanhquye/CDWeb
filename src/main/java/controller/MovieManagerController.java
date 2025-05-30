@@ -1,15 +1,14 @@
 package controller;
 
-import database.FilmDAO;
 import database.JDBCUtil;
-import database.UserDAO;
+import database.MovieDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Film;
+import model.MovieMediaLink;
 import model.User;
 import org.json.JSONObject;
 
@@ -22,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @WebServlet(name = "quanliphim", value = "/quanliphim")
-public class FilmController extends HttpServlet {
+public class MovieManagerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -32,8 +31,8 @@ public class FilmController extends HttpServlet {
     if(user == null ){
         resp.sendRedirect("404.jsp");
     }else {
-        FilmDAO filmDAO = new FilmDAO();
-        req.setAttribute("filmList", filmDAO.getAllFilm());
+        MovieDAO movieDAO = new MovieDAO();
+        req.setAttribute("movieList", movieDAO.getAllMovieBySTT());
         req.setAttribute("showAll", true);
         req.getRequestDispatcher("quanliphim.jsp").forward(req,resp);
 
@@ -51,6 +50,8 @@ public class FilmController extends HttpServlet {
         String duration = req.getParameter("duration");
         String country = req.getParameter("country");
         String description = req.getParameter("description");
+        String linkMovieTrailer = req.getParameter("linkMovieTrailer");
+        String linkMovieImage = req.getParameter("linkMovieImage");
         String content = req.getParameter("content");
         String published = req.getParameter("isPublished");
         double score = Double.parseDouble(req.getParameter("score"));
@@ -60,14 +61,16 @@ public class FilmController extends HttpServlet {
             isPublished = true;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
+        java.sql.Date sqlDate = null;
         try {
-             date = dateFormat.parse(releaseDate);
+            java.util.Date utilDate = dateFormat.parse(releaseDate);
+            sqlDate = new java.sql.Date(utilDate.getTime());
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        FilmDAO filmDAO = new FilmDAO();
-        filmDAO.addFilm(name, category, date, director, duration, country, description, content, isPublished, score);
+        MovieDAO movieDAO = new MovieDAO();
+        movieDAO.addMovie(name, category, sqlDate, director, duration, country, description, content, isPublished, score);
+        movieDAO.addMovieLink(linkMovieTrailer, linkMovieImage);
         resp.sendRedirect("quanliphim");
 
     }

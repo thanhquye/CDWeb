@@ -1,6 +1,5 @@
-<%@page import="model.Film" %>
 <%@page import="java.util.List" %>
-<%@ page import="database.FilmDAO" %>
+<%@ page import="model.MovieMediaLink" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +36,7 @@
 </head>
 
 <body class="animsition">
-<%List<Film> films = (List<Film>) request.getAttribute("filmList");%>
+<%List<MovieMediaLink> movies = (List<MovieMediaLink>) request.getAttribute("movieList");%>
 
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
@@ -311,7 +310,7 @@
                         <table class="table table-bordered text-center mb-0">
                             <thead class="bg-secondary text-dark">
                             <tr>
-                                <th class="align-middle">ID</th>
+                                <th class="align-middle">STT</th>
                                 <th class="align-middle">Tên</th>
                                 <th class="align-middle">Thể loại</th>
                                 <th class="align-middle">Ngày phát hành</th>
@@ -319,96 +318,93 @@
                                 <th class="align-middle">Thời gian</th>
                                 <th class="align-middle">Quốc gia</th>
                                 <th class="align-middle">Mô tả</th>
-                                <th class="align-middle">Nội dung</th>
                                 <th class="align-middle">Trạng thái</th>
                                 <th class="align-middle">Đánh giá</th>
-                                <th class="align-middle">Sửa</th>
+                                <th class="align-middle">Chi tiết và chỉnh sửa</th>
                                 <th class="align-middle">Xóa</th>
                             </tr>
                             </thead>
                             <tbody class="align-middle" id="renderdata-user">
                             <%boolean showAll = (boolean) request.getAttribute("showAll");
                             if (showAll) {
-                            for (Film film : films) {%>
+                            for (MovieMediaLink movie : movies) {%>
                             <tr>
-                                <td class="align-middle"><%=film.getMovieID()%>
+
+                                <td class="align-middle"><%=movie.getStt()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieName()%>
+                                <td class="align-middle"><%=movie.getMovieName()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieCategory()%>
+                                <td class="align-middle"><%=movie.getMovieCategory()%>
                                 </td>
-                                <td class="align-middle"><%=film.getReleaseDate()%>
+                                <td class="align-middle"><%=movie.getReleaseDate()%>
                                 </td>
-                                <td class="align-middle"><%=film.getDirector()%>
+                                <td class="align-middle"><%=movie.getDirector()%>
                                 </td>
-                                <td class="align-middle"><%=film.getDuration()%>
+                                <td class="align-middle"><%=movie.getDuration()%>
                                 </td>
-                                <td class="align-middle"><%=film.getCountry()%>
+                                <td class="align-middle"><%=movie.getCountry()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieDescription()%>
+                                <td class="align-middle"><%=movie.getMovieDescription()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieContent()%>
-                                </td>
-                                <%if (film.isPublished()) {%>
+
+                                <%if (movie.getIsPublished() == 1) {%>
                                 <td class="align-middle">Đã chiếu</td>
                                 <%} else {%>
                                 <td class="align-middle">Sắp chiếu</td>
                                 <%}%>
-                                <td class="align-middle"><%=film.getMovieScore()%>
+                                <td class="align-middle"><%=movie.getMovieScore()%>
                                 </td>
                                 <td class="align-middle">
-                                    <a href="update?sid=null&fid=<%=film.getMovieID()%>">
+                                    <a href="updateMovie?mid=<%=movie.getMovieID()%>">
                                         <button class="btn btn-sm btn-primary">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
                                     </a>
                                 </td>
                                 <td class="align-middle">
-                                    <button data-id="<%=film.getMovieID()%>" data-toggle="modal"
-                                            data-target="#deleteFilm" class="btn btn-sm btn-primary"><i
+                                    <button data-id="<%=movie.getMovieID()%>" data-toggle="modal"
+                                            data-target="#deletemovie" class="btn btn-sm btn-primary"><i
                                             class="fa fa-times"></i></button>
                                 </td>
                             </tr>
                             <%}%>
                             <%}else{
-                            List<Film> listFilmSearch = (List<Film>) request.getAttribute("filmListS");
-                            for(Film film : listFilmSearch){%>
+                            List<MovieMediaLink> listmoviesearch = (List<MovieMediaLink>) request.getAttribute("movieListS");
+                            for(MovieMediaLink movie : listmoviesearch){%>
                             <tr>
-                                <td class="align-middle"><%=film.getMovieID()%>
+                                <td class="align-middle"><%=movie.getStt()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieName()%>
+                                <td class="align-middle"><%=movie.getMovieName()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieCategory()%>
+                                <td class="align-middle"><%=movie.getMovieCategory()%>
                                 </td>
-                                <td class="align-middle"><%=film.getReleaseDate()%>
+                                <td class="align-middle"><%=movie.getReleaseDate()%>
                                 </td>
-                                <td class="align-middle"><%=film.getDirector()%>
+                                <td class="align-middle"><%=movie.getDirector()%>
                                 </td>
-                                <td class="align-middle"><%=film.getDuration()%>
+                                <td class="align-middle"><%=movie.getDuration()%>
                                 </td>
-                                <td class="align-middle"><%=film.getCountry()%>
+                                <td class="align-middle"><%=movie.getCountry()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieDescription()%>
+                                <td class="align-middle"><%=movie.getMovieContent()%>
                                 </td>
-                                <td class="align-middle"><%=film.getMovieContent()%>
-                                </td>
-                                <%if (film.isPublished()) {%>
+                                <%if (movie.getIsPublished() == 1) {%>
                                 <td class="align-middle">Đã chiếu</td>
                                 <%} else {%>
                                 <td class="align-middle">Sắp chiếu</td>
                                 <%}%>
-                                <td class="align-middle"><%=film.getMovieScore()%>
+                                <td class="align-middle"><%=movie.getMovieScore()%>
                                 </td>
                                 <td class="align-middle">
-                                    <a href="update?sid=null&fid=<%=film.getMovieID()%>">
+                                    <a href="updateMovie?mid=<%=movie.getMovieID()%>">
                                         <button class="btn btn-sm btn-primary">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
                                     </a>
                                 </td>
                                 <td class="align-middle">
-                                    <button data-id="<%=film.getMovieID()%>" data-toggle="modal"
-                                            data-target="#deleteFilm" class="btn btn-sm btn-primary"><i
+                                    <button data-id="<%=movie.getMovieID()%>" data-toggle="modal"
+                                            data-target="#deletemovie" class="btn btn-sm btn-primary"><i
                                             class="fa fa-times"></i></button>
                                 </td>
                             </tr>
@@ -417,7 +413,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="add-film" style="margin-left: 20px">
+                    <div class="add-movie" style="margin-left: 20px">
                         <!-- Đặt nội dung form ở đây -->
                         <div style="margin: 20px 0px 20px 0px">
                             <h4>Thêm Phim Mới</h4>
@@ -460,6 +456,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label>Link trailer</label>
+                                <input type="text" class="form-control" name="linkMovieTrailer">
+                            </div>
+                            <div class="form-group">
+                                <label>Link ảnh</label>
+                                <input type="text" class="form-control" name="linkMovieImage">
+                            </div>
+                            <div class="form-group">
                                 <label>Trạng thái</label>
                                 <div>
                                     <div class="form-check">
@@ -499,7 +503,7 @@
 
 
 <%--Delete--%>
-<div id="deleteFilm" class="modal" tabindex="-1" role="dialog">
+<div id="deletemovie" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -512,7 +516,7 @@
                 <p>Bạn có chắc chắn muốn xóa nó không ? </p>
             </div>
             <div class="modal-footer">
-                <button id="btn-delete-film" type="button" class="btn btn-danger">Xóa</button>
+                <button id="btn-delete-movie" type="button" class="btn btn-danger">Xóa</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
             </div>
         </div>
@@ -522,7 +526,7 @@
 
 <script src="./admin/js/Dialog.js"></script>
 <script>
-    Dialog('#deleteFilm', '#btn-delete-film', 'quanliphim', 'movieID', 'delete')
+    Dialog('#deletemovie', '#btn-delete-movie', 'quanliphim', 'movieID', 'delete')
 </script>
 <!-- Jquery JS-->
 <script src="admin/vendor/jquery-3.2.1.min.js"></script>

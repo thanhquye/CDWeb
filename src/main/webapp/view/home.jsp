@@ -362,7 +362,7 @@
     function showCinemaName(cName) {
         console.log('AJAX');
         $.ajax({
-            url: "/movie_ticket-demo-PEKKA/showCinemaNameAjaxf",
+            url: "/Movie_Ticket_Website_war_exploded/showCinemaNameAjaxf",
             type : "get",
             data : {
                 cid : cName

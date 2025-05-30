@@ -317,10 +317,12 @@
                         <table class="table table-bordered text-center mb-0">
                             <thead class="bg-secondary text-dark">
                             <tr>
-                                <th>Id vé</th>
-                                <th>ID rạp chiếu phim</th>
-                                <th>ID thời gian chiếu</th>
-                                <th>Chi tiết</th>
+                                <th>STT</th>
+                                <th>Người dùng</th>
+                                <th>Phim</th>
+                                <th>Rạp chiếu phim</th>
+                                <th>Số điện thoại</th>
+                                <th>Chi tiết</th>
                                 <th>Xóa</th>
                             </tr>
                             </thead>
@@ -329,9 +331,11 @@
                              if (showAll) {
                             for(Ticket ticket : tickets){%>
                             <tr>
-                                <td class="align-middle"><%=ticket.getTicketID()%></td>
-                                <td class="align-middle"><%=ticket.getCinemaID()%></td>
-                                <td class="align-middle"><%=ticket.getShowtimeID()%></td>
+                                <td class="align-middle"><%=ticket.getStt()%></td>
+                                <td class="align-middle"><%=ticket.getFullName()%></td>
+                                <td class="align-middle"><%=ticket.getMovieName()%></td>
+                                <td class="align-middle"><%=ticket.getCinemaName()%></td>
+                                <td class="align-middle"><%=ticket.getSdt()%></td>
                                 <td class="align-middle">
                                     <a href="detailticket?sid=<%=ticket.getTicketID()%>">
                                         <button class="btn btn-sm btn-primary">
@@ -352,9 +356,11 @@
                                 List<Ticket> listTicketSearch = (List<Ticket>) request.getAttribute("ticketsS");
                                 for (Ticket ticket : listTicketSearch){%>
                             <tr>
-                                <td class="align-middle"><%=ticket.getTicketID()%></td>
-                                <td class="align-middle"><%=ticket.getCinemaID()%></td>
-                                <td class="align-middle"><%=ticket.getShowtimeID()%></td>
+                                <td class="align-middle"><%=ticket.getStt()%></td>
+                                <td class="align-middle"><%=ticket.getFullName()%></td>
+                                <td class="align-middle"><%=ticket.getMovieName()%></td>
+                                <td class="align-middle"><%=ticket.getCinemaName()%></td>
+                                <td class="align-middle"><%=ticket.getSdt()%></td>
                                 <td class="align-middle">
                                     <a href="detailticket?sid=<%=ticket.getTicketID()%>">
                                         <button class="btn btn-sm btn-primary">

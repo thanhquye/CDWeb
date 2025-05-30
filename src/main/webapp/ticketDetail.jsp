@@ -1,4 +1,3 @@
-<%@ page import="model.Film" %>
 <%@ page import="model.Comment" %>
 <%@ page import="database.TicketDetailDAO" %>
 <%@ page import="model.TicketDetail" %>
@@ -326,10 +325,6 @@
                             <div class="modal-body">
                                 <!-- Đặt nội dung form ở đây -->
                                 <form >
-                                    <div class="form-group">
-                                        <label>Id vé</label>
-                                        <input type="text" class="form-control" value="<%=ticketDetail.getTicketID()%>" readonly>
-                                    </div>
                                     <div class="form-group">
                                         <label>Tên phim</label>
                                         <input type="text" class="form-control"  value="<%=ticketDetail.getMovieName()%>" readonly>

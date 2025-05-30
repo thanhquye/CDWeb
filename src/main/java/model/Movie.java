@@ -1,6 +1,7 @@
 package model;
 
 public class Movie {
+    private int stt;
     private String movieID;
     private String movieName;
     private String movieCategory;
@@ -102,5 +103,13 @@ public class Movie {
 
     public double getMovieScore() {
         return movieScore;
+    }
+
+    public int getStt() {
+        return stt;
+    }
+
+    public void setStt(int stt) {
+        this.stt = stt;
     }
 }
