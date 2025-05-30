@@ -21,7 +21,9 @@
             <div id="emailValidationMessage"
                  style="  margin: 10px 0px 7px;color: red; font-size: 13px;font-weight: 700"></div>
         </div>
-        <button id="btnSendMail" class="btn btn-success" disabled>Gửi Mail</button>
+        <button id="btnSendMail" class="btn btn-success" disabled>Gửi Email</button>
+        <!-- Phần hiển thị đếm ngược -->
+        <div id="countdown" style="margin-top: 10px; font-weight: bold;"></div>
         <div class="login-register">
             <p>Bạn đã có tài khoản?
                 <a href="login.jsp" class="register-link">Đăng nhập</a>

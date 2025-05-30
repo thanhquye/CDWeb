@@ -17,6 +17,13 @@
     Long lastSentTime = (Long) session.getAttribute("lastVerificationEmailTime");
     long now = System.currentTimeMillis();
     boolean allowResend = (lastSentTime == null || now - lastSentTime >= 60 * 1000);
+
+    // Nếu chưa đủ 1 phút thì tính số giây còn thiếu để hiển thị đếm ngược
+    long secondsLeft = 0;
+    if (!allowResend && lastSentTime != null) {
+        long diffMillis = 60 * 1000 - (now - lastSentTime);
+        secondsLeft = diffMillis / 1000;
+    }
 %>
 
 <html>
@@ -67,7 +74,7 @@
                         Tài khoản <span class="email"><%= user.getUserName() %></span> với Gmail là
                         <span class="email"><%= user.getEmail() %></span> chưa được xác minh
                     </h2>
-                    <p>Vui lòng bấm nút "Gửi mã xác minh" và tới gmail của bạn để xác minh tài khoản.</p>
+                    <p>Vui lòng bấm nút "Gửi mã xác minh" và kiểm tra gmail của bạn để xác minh tài khoản.</p>
 
                     <% if (resent != null && resent) { %>
                     <div class="message" style="color: green;">Mã xác minh đã được gửi!</div>
@@ -76,14 +83,21 @@
                     </div>
                     <% } %>
 
+                    <%-- Các nút gửi lại mã xác minh và đếm ngược --%>
                     <% if (allowResend) { %>
-                    <a class="resend-link"
+                    <a id="resendButton" class="resend-link"
                        href="<%= request.getContextPath() %>/resendVerification?email=<%= user.getEmail() %>">
                         <%= (lastSentTime == null) ? "Gửi mã xác minh" : "Gửi lại mã xác minh" %>
                     </a>
                     <% } else { %>
-                    <p style="color: rgb(128,128,128);">
-                        Bạn phải đợi ít nhất 1 phút trước khi gửi lại mã xác minh.
+                    <a id="resendButton" class="resend-link"
+                       href="<%= request.getContextPath() %>/resendVerification?email=<%= user.getEmail() %>"
+                       style="display: none;">
+                        Gửi lại mã xác minh
+                    </a>
+                    <p style="color: rgb(128,128,128);" id="resendTimer">
+                        Bạn phải đợi ít nhất 1 phút trước khi gửi lại mã xác minh. Vui lòng chờ
+                        <span id="timer"><%= secondsLeft %></span> giây.
                     </p>
                     <% } %>
                 </div>
@@ -91,6 +105,8 @@
         </div>
     </div>
 </section>
+
+<script src="assets/js/gmailVerify.js"></script>
 
 <%-- Footer --%>
 <jsp:include page="layout-view/footer.jsp"></jsp:include>
