@@ -1,7 +1,8 @@
 package model;
 
 public class TicketDetail {
-
+    String fullName;
+    String sdt;
     String ticketID;
     String price;
     String seatName;

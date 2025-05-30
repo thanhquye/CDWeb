@@ -320,7 +320,7 @@
                         <table class="table table-bordered text-center mb-0">
                             <thead class="bg-secondary text-dark">
                             <tr>
-                                <th class="align-middle">Id</th>
+                                <th class="align-middle">STT</th>
                                 <th class="align-middle">Tên người dùng</th>
                                 <th class="align-middle">Email người dùng</th>
                                 <th class="align-middle">Trạng thái hoạt động</th>
@@ -333,9 +333,12 @@
                             System.out.println(showAll);
                                 if (showAll) {
                                 List<User> users = (List<User>) request.getAttribute("userList");
-                            for (User user : users) {%>
+                            for (User user : users) {
+                                int i = 1;
+                                i += i;
+                            %>
                             <tr>
-                                <td class="align-middle"><%=user.getUserId()%>
+                                <td class="align-middle"><%=user.getStt()%>
                                 </td>
                                 <td class="align-middle"><%=user.getUserName()%>
                                 </td>
@@ -363,7 +366,7 @@
                             List<User> listUserSearch = (List<User>) request.getAttribute("userListS");
                             for(User user : listUserSearch) {%>
                             <tr>
-                                <td class="align-middle"><%=user.getUserId()%>
+                                <td class="align-middle"><%=user.getStt()%>
                                 </td>
                                 <td class="align-middle"><%=user.getUserName()%>
                                 </td>

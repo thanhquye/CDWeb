@@ -311,11 +311,10 @@
                         <table class="table table-bordered text-center mb-0">
                             <thead class="bg-secondary text-dark">
                             <tr>
-                                <th>ID Bình luận</th>
-                                <th>ID Phim</th>
-                                <th>ID Người dùng</th>
+                                <th>STT</th>
+                                <th>Tên Phim</th>
+                                <th>Tên người dùng</th>
                                 <th>Nội dung</th>
-                                <th>Sửa</th>
                                 <th>Xóa</th>
                             </tr>
                             </thead>
@@ -326,20 +325,13 @@
                                     for (Comment comment : comments) {
                             %>
                             <tr>
-                                <td class="align-middle"><%=comment.getCommentID()%>
+                                <td class="align-middle"><%=comment.getStt()%>
                                 </td>
-                                <td class="align-middle"><%=comment.getMovieID()%>
+                                <td class="align-middle"><%=comment.getFullName()%>
                                 </td>
-                                <td class="align-middle"><%=comment.getCustomerID()%>
+                                <td class="align-middle"><%=comment.getMovieName()%>
                                 </td>
                                 <td class="align-middle"><%=comment.getCommentText()%>
-                                </td>
-                                <td class="align-middle">
-                                    <a href="update?fid=null&sid=<%=comment.getCommentID()%>">
-                                        <button class="btn btn-sm btn-primary">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </button>
-                                    </a>
                                 </td>
                                 <td class="align-middle">
                                     <button data-id="<%=comment.getCommentID()%>" data-toggle="modal"
@@ -356,20 +348,14 @@
                                 for (Comment comment : listCommentSearch) {
                             %>
                             <tr>
-                                <td class="align-middle"><%=comment.getCommentID()%>
+
+                                <td class="align-middle"><%=comment.getStt()%>
                                 </td>
-                                <td class="align-middle"><%=comment.getMovieID()%>
+                                <td class="align-middle"><%=comment.getFullName()%>
                                 </td>
-                                <td class="align-middle"><%=comment.getCustomerID()%>
+                                <td class="align-middle"><%=comment.getMovieName()%>
                                 </td>
                                 <td class="align-middle"><%=comment.getCommentText()%>
-                                </td>
-                                <td class="align-middle">
-                                    <a href="update?fid=null&sid=<%=comment.getCommentID()%>">
-                                        <button class="btn btn-sm btn-primary">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </button>
-                                    </a>
                                 </td>
                                 <td class="align-middle">
                                     <button data-id="<%=comment.getCommentID()%>" data-toggle="modal"

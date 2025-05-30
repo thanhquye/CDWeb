@@ -57,7 +57,7 @@
 
 <%--Section hiển thị lịch chiếu phim --%>
 <section class="showtimes-section" id="showtimeSection" >
-    <div class="showtimes-title" style="padding : 20px 0px 30px 0px;"> LỊCH CHIẾU PHIM </div>
+    <div class="showtimes-title" style="padding : 20px 0px 30px 0px;"> LỊCH CHIẾU PHIM - ${movie.movieName}</div>
     <div class="border-div-1">
         <div class="container">
             <div class="row">

@@ -2,7 +2,6 @@ package controller;
 
 import database.JDBCUtil;
 import database.TicketDAO;
-import database.UserDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet(name = "quanlive", value = "/quanlive")
-public class TicketController extends HttpServlet {
+public class TicketManagerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

@@ -56,9 +56,9 @@
             <div class="col-lg-4 pb-5">
                 <!-- Account Sidebar-->
                 <div class="author-card pb-3">
-                    <div class="author-card-cover" style="background-image: url(../Movie_Ticket_Website/assets/images/mtp-banner.png);"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;9999 points</a></div>
+                    <div class="author-card-cover" style="background-image: url(${pageContext.request.contextPath}/assets/images/mtp-banner.png);"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;9999 points</a></div>
                     <div class="author-card-profile">
-                        <div class="author-card-avatar"><img src="../Movie_Ticket_Website/assets/images/obitoAVATAR.png" alt="Daniel Adams">
+                        <div class="author-card-avatar"><img src="${pageContext.request.contextPath}/assets/images/obitoAVATAR.png" alt="Daniel Adams">
                         </div>
                         <div class="author-card-details">
                             <h5 class="author-card-name text-lg">${sessionScope.get("userName")} #${sessionScope.get("user").userId}</h5>
